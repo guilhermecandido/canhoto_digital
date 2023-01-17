@@ -9,12 +9,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return const MaterialApp(
+      home: MyHomePage(title: 'Faxon'),
     );
   }
 }
@@ -29,14 +25,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,4 +39,26 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+Widget loginHeader() {
+  return Column(
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(20),
+        child: Image.asset(
+          'lib/assets/images/logo.png',
+          color: const Color.fromARGB(255, 255, 255, 255),
+        ),
+      ),
+      const Text(
+        'LOGIN',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 40,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ],
+  );
 }
