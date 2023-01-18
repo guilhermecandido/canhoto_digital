@@ -31,7 +31,7 @@ Widget loginHeader() {
         'LOGIN',
         style: TextStyle(
           color: Colors.white,
-          fontSize: 40,
+          fontSize: 42,
           fontWeight: FontWeight.bold,
         ),
       ),
