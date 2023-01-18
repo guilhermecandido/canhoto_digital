@@ -52,22 +52,12 @@ Widget loginHeader() {
 }
 
 Widget loginForm() {
+  String cpf = '';
   return Column(
     children: [
       Container(
-        alignment: Alignment.centerLeft,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 5,
-              offset: Offset(0, 2),
-            ),
-          ],
-        ),
-        child: TextField(
+        margin: const EdgeInsets.all(50),
+        child: TextFormField(
           inputFormatters: [
             MaskTextInputFormatter(
               mask: "###.###.###-##",
@@ -75,16 +65,41 @@ Widget loginForm() {
             ),
           ],
           decoration: const InputDecoration(
-            border: InputBorder.none,
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(),
             contentPadding: EdgeInsets.only(top: 14),
+            hintText: 'CPF',
+            hintStyle: TextStyle(
+              color: Colors.black26,
+            ),
             prefixIcon: Icon(
               Icons.person,
               color: Color(0xff198bb5),
             ),
           ),
           keyboardType: TextInputType.number,
+          onChanged: (text) {
+            cpf = text;
+          },
         ),
+      ),
+      ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 50),
+          backgroundColor: Color(0x660b4257),
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+        ),
+        onPressed: () {
+          validate(cpf);
+        },
+        child: const Text('Entrar'),
       ),
     ],
   );
 }
+
+void validate(String cpf) {}
