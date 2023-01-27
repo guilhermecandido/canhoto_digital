@@ -1,5 +1,8 @@
-import 'package:canhoto_digital_faxon_v2/login_page.dart';
+import 'package:canhoto_digital_faxon_v2/pages/login_page.dart';
+import 'package:canhoto_digital_faxon_v2/pages/splash_page.dart';
 import 'package:flutter/material.dart';
+
+import 'pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,31 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      initialRoute: '/splash',
+      routes: {
+        '/splash': (_) => const SplashPage(),
+        '/login': (_) => const LoginPage(),
+        '/home': (_) => const HomePage(),
+      },
     );
   }
-}
-
-Widget loginHeader() {
-  return Column(
-    children: [
-      Padding(
-        padding: const EdgeInsets.all(20),
-        child: Image.asset(
-          'lib/assets/images/logo.png',
-          color: const Color.fromARGB(255, 255, 255, 255),
-        ),
-      ),
-      const Text(
-        'LOGIN',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 42,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    ],
-  );
 }
