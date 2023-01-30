@@ -25,23 +25,21 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        alignment: AlignmentDirectional.topCenter,
-        children: [
-          Background(),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Image.asset(
-              'lib/assets/images/logo.png',
-              color: const Color.fromARGB(255, 255, 255, 255),
-            ),
+    return Stack(
+      alignment: AlignmentDirectional.topCenter,
+      children: [
+        const Background(),
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Image.asset(
+            'lib/assets/images/logo.png',
+            color: const Color.fromARGB(255, 255, 255, 255),
           ),
-          Center(
-            child: CircularProgressIndicator(color: Colors.white),
-          ),
-        ],
-      ),
+        ),
+        const Center(
+          child: CircularProgressIndicator(color: Colors.white),
+        ),
+      ],
     );
   }
 }
