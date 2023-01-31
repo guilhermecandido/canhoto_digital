@@ -1,5 +1,5 @@
+import 'package:canhoto_digital_faxon_v2/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../components/background.dart';
 
 class SplashPage extends StatefulWidget {
@@ -12,15 +12,13 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    final prefs = SharedPreferences.getInstance();
     super.initState();
-    // Future.wait([prefs]).then((value) => value[0]
-    //     ? (_) => Navigator.of(context).pushReplacementNamed('/home')
-    //     : (_) => Navigator.of(context).pushReplacementNamed('/login'));
-    //Consulta inicial
-    Future.delayed(const Duration(seconds: 3)).then(
-      (_) => Navigator.of(context).pushReplacementNamed('/login'),
-    );
+    Future.wait([
+      LoginController.isAuth(),
+      Future.delayed(const Duration(seconds: 3)),
+    ]).then((value) => value[0]
+        ? Navigator.of(context).pushReplacementNamed('/home')
+        : Navigator.of(context).pushReplacementNamed('/login'));
   }
 
   @override
