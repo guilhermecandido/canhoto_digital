@@ -1,9 +1,10 @@
+import 'package:canhoto_digital_faxon_v2/widgets/date_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'dart:ui' as ui;
 import '../widgets/custom_text_form.dart';
-import 'login_page.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,7 +19,6 @@ class _HomePageState extends State<HomePage> {
     await prefs.remove('cpf');
     Navigator.of(context).pushNamedAndRemoveUntil('/login', (_) => true);
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,9 +26,9 @@ class _HomePageState extends State<HomePage> {
         leading: RotatedBox(
           quarterTurns: 2,
           child: IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.logout,
-              textDirection: TextDirection.ltr,
+              textDirection: ui.TextDirection.ltr,
               semanticLabel: 'Logout',
             ),
             onPressed: _logout,
@@ -49,7 +49,12 @@ class _HomePageState extends State<HomePage> {
                 color: Color(0x660b4257),
               ),
             ),
-          ],
+            const SizedBox(height: 15),
+            DatePickerForm(
+              hintText: 'Data da entrega',
+              prefixicon: Icon(Icons.calendar_month),
+            ),
+          ]
         ),
       ),
     );
