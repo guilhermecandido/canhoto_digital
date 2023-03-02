@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import '../controllers/login_controller.dart';
-import '../pages/home_page.dart';
+import 'error_snackbar.dart';
 
 class LoginButton extends StatelessWidget {
   final LoginController loginController;
-  final formKey;
-  const LoginButton({super.key, required this.loginController, this.formKey});
+  final GlobalKey<FormState> formKey;
+  const LoginButton(
+      {super.key, required this.loginController, required this.formKey});
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<bool>(
+      // Exibe o botão de login ou um Loader, de acordo com o valor de inLoader
       valueListenable: loginController.inLoader,
       builder: (_, inLoader, __) => inLoader
           ? const CircularProgressIndicator(color: Colors.white)
@@ -26,26 +25,16 @@ class LoginButton extends StatelessWidget {
                 ),
               ),
               onPressed: () {
+                // Verificar se o CPF digitado é válido e, se sim, autenticar usuário
                 if (formKey.currentState!.validate()) {
                   loginController.auth().then(
                     (result) {
+                      // Verificar se usuário foi autenticado e, se sim, encaminhá-lo à HomePage, se não, mostrar mensagem de erro
                       if (result) {
-                        print('Logou!');
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomePage(),
-                          ),
-                        );
+                        Navigator.of(context).pushReplacementNamed('/home');
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Falha ao realizar login'),
-                            duration: Duration(seconds: 5),
-                            padding: EdgeInsets.all(20),
-                            backgroundColor: Colors.redAccent,
-                          ),
-                        );
+                        String errormessage = 'Falha ao realizar login';
+                        errorSnackBar(context, errormessage);
                       }
                     },
                   );

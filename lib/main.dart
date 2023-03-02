@@ -1,7 +1,6 @@
 import 'package:canhoto_digital_faxon_v2/pages/login_page.dart';
 import 'package:canhoto_digital_faxon_v2/pages/splash_page.dart';
 import 'package:flutter/material.dart';
-
 import 'pages/home_page.dart';
 
 void main() {
@@ -14,6 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/splash',
       routes: {
