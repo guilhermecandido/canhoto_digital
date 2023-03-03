@@ -26,6 +26,7 @@ class _LoginFormState extends State<LoginForm> {
               children: [
                 CustomTextForm(
                   onChanged: _controller.setCPF,
+                  //Validação de login
                   validator: (value) {
                     if (value == null || value.isEmpty || value.length < 14) {
                       return 'Digite seu CPF';
