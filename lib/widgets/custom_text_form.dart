@@ -8,12 +8,14 @@ class CustomTextForm extends StatelessWidget {
   final TextInputType keyboardType;
   final String hintText;
   final Widget prefixicon;
+  final Widget? suffixIcon;
 
   const CustomTextForm(
       {super.key,
       this.onChanged,
       this.validator,
       this.inputFormatters,
+      this.suffixIcon,
       required this.keyboardType,
       required this.hintText,
       required this.prefixicon});
@@ -31,6 +33,7 @@ class CustomTextForm extends StatelessWidget {
           color: Colors.black26,
         ),
         prefixIcon: prefixicon,
+        suffixIcon: suffixIcon,
       ),
       validator: validator,
       inputFormatters: inputFormatters,

@@ -52,8 +52,26 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 15),
             DatePickerForm(
               hintText: 'Data da entrega',
-              prefixicon: Icon(Icons.calendar_month),
+              prefixicon: Icon(
+                Icons.calendar_month, 
+                color: Color(0x660b4257),
+              ), 
             ),
+            const SizedBox(height: 15),
+            CustomTextForm(
+              keyboardType: TextInputType.number,
+              hintText: 'NF-e',
+              prefixicon: const Icon(
+                Icons.receipt,
+                color: Color(0x660b4257),
+              ),
+              // suffixIcon: IconButton(
+              //     icon: Icon(Icons.document_scanner_outlined, size: 35),
+              //     onPressed: (),
+              // ),
+            ),
+            // ElevatedButton(onPressed: onPressed, child:),
+            const SizedBox(height: 15),
           ]
         ),
       ),
