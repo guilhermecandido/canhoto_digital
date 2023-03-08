@@ -9,6 +9,7 @@ class CustomTextForm extends StatelessWidget {
   final String hintText;
   final Widget prefixicon;
   final Widget? suffixIcon;
+  final controller;
 
   const CustomTextForm(
       {super.key,
@@ -18,11 +19,12 @@ class CustomTextForm extends StatelessWidget {
       this.suffixIcon,
       required this.keyboardType,
       required this.hintText,
-      required this.prefixicon});
+      required this.prefixicon, this.controller});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
